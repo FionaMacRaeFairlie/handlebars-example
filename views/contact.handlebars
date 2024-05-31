@@ -1,16 +1,15 @@
-<h2>Welcome to the contact page</h2>
+<div id="container">
+    <main class="vh-100">
+        <h2>Page to demonstrate more Handlebars features</h2>
 
 
-{{#each lists as |xValue xKey|}}
+        {{#each lists as |xValue xKey|}}
+            {{#each xValue/items as |yValue yKey|}}
+            <p>{{yValue}}</p>
+            {{/each}}
+        <hr>
+        {{/each}}
 
-
-    {{#each xValue/items as |yValue yKey|}}
-        <p>{{yValue}}</p>
-    {{/each}}
-
-    <hr>
-
-{{/each}}
-
-
-
+    </main>
+</div>
+{{> footer}}

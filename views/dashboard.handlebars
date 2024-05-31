@@ -1,24 +1,20 @@
+<div id="container">
+    <main>
+        {{#unless isListEnabled}}
+
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+            <li>Donate</li>
+        </ul>
 
 
-{{#unless isListEnabled}}
+        {{/unless}}
 
-    <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Donate</li>
-    </ul>
+        {{#with author }}
+        <h2>My Name is {{firstName}} {{lastName}}</h2>
 
-
-{{/unless}}
-
-
-
-
-
-
-{{#with author }}
-    <h2>My Name is {{firstName}} {{lastName}}</h2>
-
-    <p>My First project was {{project.name}}</p>
-{{/with}}
-
+        <p>My First project was {{project.name}}</p>
+        {{/with}}
+    </main>
+</div>

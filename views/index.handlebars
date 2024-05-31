@@ -1,45 +1,79 @@
+<div id="container">
+  <main>
+    {{> header}}
 
-{{> header}}
-
-
-
-<h2>Hello World!!!!</h2>
-<p>Welcome to my App</p>
-
-{{#if isDisplayName}}
-    <p>My name is {{ name }} </p>
-
-    {{else}}
-    <p>No name found!!!</p>
-{{/if}}
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col-10">
+        <h1>Student and programme</h1>
+        {{#list students}}
+        {{student}} {{programme}}
+        {{/list}}
 
 
-
-
-{{#if isAgeEnabled}}
-    <p> I am {{age}}</p>
-
-    {{else}}
-
-    <p>No age provided!</p>
-
-
-{{/if}}
-
-
-{{calculation 50}}
-
-{{!-- This is a listing --}}
-{{#list people}}
-  {{firstName}} {{lastName}}
-{{/list}}
-
+        <h1>Student Records</h1>
+        <table class="table">
+          <tr>
+            <th>Name</th>
+            <th>Programme</th>
+            <th>Modules</th>
+          </tr>
+          {{#each students}}
+          <tr>
+            <td>{{this.student}}</td>
+            <td>{{this.programme}}</td>
+            <td>
+              <table class="table">
+                {{#each modules}}
+                <tr>
+                  <td>{{this.name}}</td>
+                  <td>{{this.grade}}</td>
+                </tr>
+                {{/each}}
+              </table>
+            </td>
+            {{/each}}
+          </tr>
+          <table class="table">
+            <div>
+              <h1>Web Development</h1>
+              <h2> Students who passed</h2>
+              <table class="table">
+                {{#each students as |studentRecord|}}
+                {{#each modules}}
+                <tr>
+                  {{#ifPass this.name this.grade "Web Development" }}
+                  <td> {{studentRecord.student}}</td>
+                  <td>{{this.grade}}</td>
+                  {{/ifPass}}
+                </tr>
+                {{/each}}
+                {{/each}}
+              </table class="table">
+              <h2> Students who failed</h2>
+              <table class="table">
+                {{#each students as |studentRecord|}}
+                {{#each modules}}
+                <tr>
+                  {{#ifFail this.name this.grade "Web Development" }}
+                  <td> {{studentRecord.student}}</td>
+                  <td>{{this.grade}}</td>
+                  {{/ifFail}}
+                </tr>
+                {{/each}}
+                {{/each}}
+              </table>
+            </div>
+            <div class="col-1"></div>
+      </div>
+  </main>
+</div>
 {{> footer}}
 
 
 
 
 {{! This is just a test}}
-{{{ test  }}}
+{{{ test }}}
 
 {{ test }}
